@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const { ssoRouter } = require('./sso')
+const { httpError } = require('./utils')
 
 function server () {
   const app = express()
@@ -18,6 +19,17 @@ function server () {
   app.get('/', (req, res) => {
     res.redirect(`/auth/realms/${config.realm}`)
   })
+
+  app.use(
+    (req, res, next) => {
+      next(httpError(404))
+    },
+    (err, req, res, next) => {
+      console.error('Error: %s %s', err.status, err.message)
+      res.status = err.status || 500
+      res.end()
+    }
+  )
 
   return app
 }

@@ -5,6 +5,14 @@ const uuid4 = () =>
     (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
   )
 
+const httpError = (status, code, msg) => {
+  const err = new Error(msg || status)
+  err.status = status
+  err.code = code
+  return err
+}
+
 module.exports = {
-  uuid4
+  uuid4,
+  httpError
 }

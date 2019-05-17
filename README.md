@@ -1,5 +1,7 @@
 # fake-cloak
 
+NOTE: This project is unsecure. Only use for dev purposes.
+
 ## run with keycloak-nodejs-connect/example
 
 ```bash
