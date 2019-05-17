@@ -1,6 +1,6 @@
 {
-  "name": "@my/jwt",
-  "version": "1.0.0",
+  "name": "@my/fake-cloak",
+  "version": "1.0.0-0",
   "description": "",
   "keywords": [],
   "license": "ISC",
@@ -8,18 +8,18 @@
   "main": "src",
   "scripts": {
     "lint": "eslint src test",
-    "start": "node src/server",
+    "start": "nodemon src/server",
     "test": "mocha"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "configg": "^1.2.3",
-    "cookie": "^0.4.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.0",
     "jsonwebtoken": "^8.5.1",
+    "keypairs": "^1.2.14",
     "morgan": "^1.9.1"
   },
   "devDependencies": {

@@ -13,7 +13,7 @@ const getPayload = ({
   date = new Date(), // @param {Date} [date]
   expires = 60, // @param {Number} [expires] in seconds
   refresh, // @param {Boolean} [refresh] if true issue a refresh token
-  audience = 'app-test' // @param {String} [audience]
+  audience = 'app-test' // @param {String} [audience],
 } = {}) => {
   return {
     jti: uuid4(),
@@ -49,7 +49,7 @@ const getPayload = ({
 
 const sign = ({ expires, refresh, audience } = {}) => {
   const payload = getPayload({ expires, refresh, audience })
-  return jwtSign(payload, jwtKeys.privateKey, { algorithm: 'RS256' })
+  return jwtSign(payload, jwtKeys.privateKey, { algorithm: 'RS256', keyid: jwtKeys.jwk.kid })
 }
 
 const verify = (token) => {

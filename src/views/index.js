@@ -18,7 +18,11 @@ ${body}
 </html>
 `
 
-const loginPage = ({ error } = {}) => page({
+const hiddenInput = (hidden = {}) => Object.entries(hidden)
+  .map(([name, value]) => `<input type="hidden" name="${name}" value="${encodeURIComponent(value)}">`)
+  .join('\n')
+
+const loginPage = ({ error, hidden } = {}) => page({
   title: 'Login',
   body: `
   <form method="POST">
@@ -33,6 +37,7 @@ const loginPage = ({ error } = {}) => page({
     <div><input type="text" name="email" placeholder="test@test"></div>
     <div><label for="password">Password</label></div>
     <div><input type="password" name="password" placeholder="test"></div>
+    ${hiddenInput(hidden)}
     <br>
     <div><button>Login</button></div>
   </form>
